@@ -4,7 +4,8 @@
   "description": "Image zooming library for BigCommerce",
   "main": "dist/js/Zoom",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon server.js",
+    "build": "gulp bundle"
   },
   "repository": {
     "type": "git",
