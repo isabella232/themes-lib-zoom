@@ -1,0 +1,31 @@
+{
+  "name": "bc-zoom",
+  "version": "1.0.0",
+  "description": "Image zooming library for BigCommerce",
+  "main": "dist/js/Zoom",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/pixelunion/bc-zoom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/pixelunion/bc-zoom#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "finalhandler": "^0.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "nodemon": "^1.10.0",
+    "serve-static": "^1.11.1",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "photoswipe": "^4.1.2"
+  }
+}
