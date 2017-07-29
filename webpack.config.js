@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: __dirname + '/demo/css/style.css',
+      filename: '../css/style.css',
       allChunks: true,
     }),
     new webpack.ProvidePlugin({

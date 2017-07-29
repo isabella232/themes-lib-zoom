@@ -41,6 +41,7 @@ var Zoom = function () {
    *
    */
 
+
   _createClass(Zoom, [{
     key: '_injectTemplate',
     value: function _injectTemplate() {
@@ -59,9 +60,9 @@ var Zoom = function () {
     value: function _init(imageArray) {
       this.pswpElement = $('.pswp')[0];
 
-      this.ProductImages = new _photoswipe2.default(this.pswpElement, _photoswipeUiDefault2.default, imageArray, this.options);
+      this.productImages = new _photoswipe2.default(this.pswpElement, _photoswipeUiDefault2.default, imageArray, this.options);
 
-      this.ProductImages.init();
+      this.productImages.init();
     }
 
     /**

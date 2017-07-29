@@ -1,0 +1,18 @@
+$pswp__assets-path: "/demo/img/";
+@import "../../node_modules/photoswipe/src/css/main";
+@import "../../node_modules/photoswipe/src/css/default-skin/default-skin";
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20vw;
+}
+
+.image {
+  display: block;
+  width: 25%;
+
+  img {
+    max-width: 100%
+  }
+}

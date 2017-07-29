@@ -20,7 +20,6 @@ export default class Zoom {
    * Add the PhotoSwipe template to the DOM
    *
    */
-
   _injectTemplate() {
     $(document.body).append(photoSwipeTemplate);
   }
@@ -31,13 +30,12 @@ export default class Zoom {
    * @param {array} imageArray The array of large / zoomable images
    *
    */
-
   _init(imageArray) {
     this.pswpElement = $('.pswp')[0];
 
-    this.ProductImages = new PhotoSwipe(this.pswpElement, PhotoSwipeUI_Default, imageArray, this.options);
+    this.productImages = new PhotoSwipe(this.pswpElement, PhotoSwipeUI_Default, imageArray, this.options);
 
-    this.ProductImages.init();
+    this.productImages.init();
   }
 
   /**
@@ -46,7 +44,6 @@ export default class Zoom {
    * @returns {array} of image objects
    *
    */
-
   _buildImageArray() {
     const paths = $(this.imageSelector).toArray().map((element) => {
       return $(element).attr('href');
@@ -63,7 +60,6 @@ export default class Zoom {
    * @returns {Promise} Returns the image meta if resolved (image loaded)
    *
    */
-
   _getImageMeta(src) {
     return new Promise(resolve => {
       const $thumbnail = $(`[href="${src}"]`).find('img');
@@ -90,7 +86,6 @@ export default class Zoom {
    * @param {int} index The index of the image within the gallery
    *
    */
-
   _getThumbBounds(index) {
     const thumbnail = $(this.imageSelector)[index];
 
@@ -112,7 +107,6 @@ export default class Zoom {
    * @param {int} index The index of the image within the gallery
    *
    */
-
   show(index) {
     this.options.index = index;
     this.options.getThumbBoundsFn = index => this._getThumbBounds(index);
