@@ -1,9 +1,9 @@
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
-import { photoSwipeTemplate } from './photoSwipeTemplate';
+import photoSwipeTemplate from './photoSwipeTemplate';
 
 export default class Zoom {
-  constructor(imageSelector, options) {
+  constructor(imageSelector, context, options) {
     this.options = $.extend({
       index: 0,
       bgOpacity: 0.95,
@@ -11,6 +11,7 @@ export default class Zoom {
     }, options);
 
     this.imageSelector = imageSelector;
+    this.context = context;
 
     this._injectTemplate();
   }
@@ -21,7 +22,7 @@ export default class Zoom {
    *
    */
   _injectTemplate() {
-    $(document.body).append(photoSwipeTemplate);
+    $(document.body).append(photoSwipeTemplate(this.context));
   }
 
   /**

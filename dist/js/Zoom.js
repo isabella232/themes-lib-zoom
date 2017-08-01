@@ -16,12 +16,14 @@ var _photoswipeUiDefault2 = _interopRequireDefault(_photoswipeUiDefault);
 
 var _photoSwipeTemplate = require('./photoSwipeTemplate');
 
+var _photoSwipeTemplate2 = _interopRequireDefault(_photoSwipeTemplate);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Zoom = function () {
-  function Zoom(imageSelector, options) {
+  function Zoom(imageSelector, context, options) {
     _classCallCheck(this, Zoom);
 
     this.options = $.extend({
@@ -31,6 +33,7 @@ var Zoom = function () {
     }, options);
 
     this.imageSelector = imageSelector;
+    this.context = context;
 
     this._injectTemplate();
   }
@@ -45,7 +48,7 @@ var Zoom = function () {
   _createClass(Zoom, [{
     key: '_injectTemplate',
     value: function _injectTemplate() {
-      $(document.body).append(_photoSwipeTemplate.photoSwipeTemplate);
+      $(document.body).append((0, _photoSwipeTemplate2.default)(this.context));
     }
 
     /**

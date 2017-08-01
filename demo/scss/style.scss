@@ -5,12 +5,13 @@ $pswp__assets-path: "/demo/img/";
 .images {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20vw;
+  min-height: 100vh;
 }
 
 .image {
   display: block;
-  width: 25%;
+  width: 35%;
+  margin: auto;
 
   img {
     max-width: 100%
