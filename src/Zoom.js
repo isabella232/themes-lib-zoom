@@ -1,6 +1,6 @@
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
-import photoSwipeTemplate from './photoSwipeTemplate';
+import * as pst from './photoSwipeTemplate';
 
 export default class Zoom {
   constructor(imageSelector, context, options) {
@@ -12,6 +12,7 @@ export default class Zoom {
 
     this.imageSelector = imageSelector;
     this.context = context;
+    this.templateSelector = `.${pst.templateClass}`;
 
     this._injectTemplate();
   }
@@ -22,7 +23,9 @@ export default class Zoom {
    *
    */
   _injectTemplate() {
-    $(document.body).append(photoSwipeTemplate(this.context));
+    if ($(this.templateSelector).length) return;
+
+    $(document.body).append(pst.template(this.context));
   }
 
   /**
@@ -32,7 +35,7 @@ export default class Zoom {
    *
    */
   _init(imageArray) {
-    this.pswpElement = $('.pswp')[0];
+    this.pswpElement = $(this.templateSelector)[0];
 
     this.productImages = new PhotoSwipe(this.pswpElement, PhotoSwipeUI_Default, imageArray, this.options);
 

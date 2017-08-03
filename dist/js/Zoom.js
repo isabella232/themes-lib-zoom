@@ -16,7 +16,9 @@ var _photoswipeUiDefault2 = _interopRequireDefault(_photoswipeUiDefault);
 
 var _photoSwipeTemplate = require('./photoSwipeTemplate');
 
-var _photoSwipeTemplate2 = _interopRequireDefault(_photoSwipeTemplate);
+var pst = _interopRequireWildcard(_photoSwipeTemplate);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,6 +36,7 @@ var Zoom = function () {
 
     this.imageSelector = imageSelector;
     this.context = context;
+    this.templateSelector = '.' + pst.templateClass;
 
     this._injectTemplate();
   }
@@ -48,7 +51,9 @@ var Zoom = function () {
   _createClass(Zoom, [{
     key: '_injectTemplate',
     value: function _injectTemplate() {
-      $(document.body).append((0, _photoSwipeTemplate2.default)(this.context));
+      if ($(this.templateSelector).length) return;
+
+      $(document.body).append(pst.template(this.context));
     }
 
     /**
@@ -61,7 +66,7 @@ var Zoom = function () {
   }, {
     key: '_init',
     value: function _init(imageArray) {
-      this.pswpElement = $('.pswp')[0];
+      this.pswpElement = $(this.templateSelector)[0];
 
       this.productImages = new _photoswipe2.default(this.pswpElement, _photoswipeUiDefault2.default, imageArray, this.options);
 

@@ -1,4 +1,6 @@
-export default function photoSwipeTemplate(context) {
+const templateClass = 'pswp';
+
+function template(context) {
   const strings = {
     close: context.zoomClose || 'Close (Esc)',
     share: context.zoomShare || 'Share',
@@ -9,7 +11,7 @@ export default function photoSwipeTemplate(context) {
   };
 
   return (
-    `<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    `<div class="${templateClass}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="pswp__bg"></div>
       <div class="pswp__scroll-wrap">
         <div class="pswp__container">
@@ -43,4 +45,9 @@ export default function photoSwipeTemplate(context) {
       </div>
     </div>`
   );
+}
+
+export {
+  templateClass,
+  template,
 }
