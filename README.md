@@ -64,7 +64,7 @@
 ```
   this.imageLightbox = new Zoom('[data-product-image]', context);
 
-  $(document.body).on('click', '[data-product-image]', (event) => {
+  $('.image-container').on('click', '[data-product-image]', (event) => {
     event.preventDefault();
     this.imageLightbox.show($(event.currentTarget).index());
   });
