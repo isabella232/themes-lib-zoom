@@ -34,6 +34,7 @@ var Zoom = function () {
       history: false
     }, options);
 
+    this.isOpen = false;
     this.imageSelector = imageSelector;
     this.context = context;
     this.templateSelector = '.' + pst.templateClass;
@@ -66,10 +67,15 @@ var Zoom = function () {
   }, {
     key: '_init',
     value: function _init(imageArray) {
+      var _this = this;
+
       this.pswpElement = $(this.templateSelector)[0];
 
       this.productImages = new _photoswipe2.default(this.pswpElement, _photoswipeUiDefault2.default, imageArray, this.options);
 
+      this.productImages.listen('close', function () {
+        return _this.isOpen = false;
+      });
       this.productImages.init();
     }
 
@@ -157,15 +163,20 @@ var Zoom = function () {
   }, {
     key: 'show',
     value: function show(index) {
-      var _this = this;
+      var _this2 = this;
+
+      // Ensure that we don't open a new instance before the first closes.
+      // Having two open instances can put us into an invalid state.
+      if (this.isOpen) return;
+      this.isOpen = true;
 
       this.options.index = index;
       this.options.getThumbBoundsFn = function (index) {
-        return _this._getThumbBounds(index);
+        return _this2._getThumbBounds(index);
       };
 
       this._buildImageArray().then(function (imageArray) {
-        _this._init(imageArray);
+        _this2._init(imageArray);
       });
     }
   }]);

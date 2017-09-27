@@ -10,6 +10,7 @@ export default class Zoom {
       history: false,
     }, options);
 
+    this.isOpen = false;
     this.imageSelector = imageSelector;
     this.context = context;
     this.templateSelector = `.${pst.templateClass}`;
@@ -37,8 +38,14 @@ export default class Zoom {
   _init(imageArray) {
     this.pswpElement = $(this.templateSelector)[0];
 
-    this.productImages = new PhotoSwipe(this.pswpElement, PhotoSwipeUI_Default, imageArray, this.options);
+    this.productImages = new PhotoSwipe(
+      this.pswpElement,
+      PhotoSwipeUI_Default,
+      imageArray,
+      this.options
+    );
 
+    this.productImages.listen('close', () => this.isOpen = false);
     this.productImages.init();
   }
 
@@ -112,6 +119,11 @@ export default class Zoom {
    *
    */
   show(index) {
+    // Ensure that we don't open a new instance before the first closes.
+    // Having two open instances can put us into an invalid state.
+    if (this.isOpen) return;
+    this.isOpen = true;
+
     this.options.index = index;
     this.options.getThumbBoundsFn = index => this._getThumbBounds(index);
 
