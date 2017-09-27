@@ -5,7 +5,7 @@
   "main": "dist/js/Zoom",
   "scripts": {
     "serve": "nodemon server.js",
-    "build": "gulp bundle"
+    "build": "gulp bundle; webpack"
   },
   "repository": {
     "type": "git",
