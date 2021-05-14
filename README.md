@@ -5,7 +5,7 @@
 #### 1. Install module with npm.
 
 ```
-  npm i --save bitbucket:pixelunion/bc-zoom
+  npm i --save github:pixelunion/bc-zoom
 ```
 
 #### 2. Update bc-core to ensure your theme has the necessary language strings.
